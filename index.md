@@ -64,7 +64,7 @@ If your code doesn't stop running, Ctrl-C should stop the running process.
 this is an inline ```code()``` block.
 
 
-[Hyperlink Example - Instructions to use this theme to write specs](https://github.com/eecs485staff/primer-spec/blob/develop/docs/USAGE_ADVANCED.md#advanced-markdown-tips)
+[Hyperlink Example - Instructions to use this theme to write specs](https://github.com/eecs485staff/primer-spec/blob/develop/docs/USAGE_ADVANCED.md#advanced-markdown-tips)  
 [Hyperlink Example - Markdown Guide](https://www.markdownguide.org/basic-syntax/)
 
 
