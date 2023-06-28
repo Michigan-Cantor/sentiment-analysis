@@ -10,9 +10,9 @@ The goal of this project is to perform sentiment analysis on tweets related to a
 
 Before starting the project, ensure that the following dependencies are installed:
 
-Python (version 3.x)
-Tweepy library (install using pip: pip install tweepy)
-TextBlob library (install using pip: pip install textblob)
+  **Python (version 3.x)    
+  Tweepy library (install using pip: pip install tweepy)    
+  TextBlob library (install using pip: pip install textblob)**    
 
 ### Setup
 
