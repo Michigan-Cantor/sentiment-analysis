@@ -1,71 +1,85 @@
----
-layout: spec
-latex: true
-mermaid: true
----
+## Cantor Twitter Sentiment Analysis Project
 
-Cantor P2: Twitter Sentiment Analysis
-======================
+Cantor coding project 1 (adapted from Siraj Raval on Youtube)
 
-## Introduction
+### Project Overview
 
-abcdefghijklmnop
+The goal of this project is to perform sentiment analysis on tweets related to a specific topic using the Twitter API, Tweepy library, and the TextBlob library in Python. The project aims to teach intermediate coders how to use machine learning techniques for sentiment analysis and enhance their understanding of Python programming. The completed code will be concise, consisting of approximately 40-50 lines, and will only use the Tweepy and TextBlob libraries.
 
+### Prerequisites
 
-### Overview
+Before starting the project, ensure that the following dependencies are installed:
 
-qwertyuiop
+Python (version 3.x)
+Tweepy library (install using pip: pip install tweepy)
+TextBlob library (install using pip: pip install textblob)
 
-In this tutorial we will:
+### Setup
 
-- 
-- 
-- 
-- 
-- 
+a. Obtain Twitter API credentials:
+
+Visit the Twitter Developer Platform (https://developer.twitter.com/en/apps) and create a new app.
+Obtain the consumer key, consumer secret, access token, and access token secret.
 
 
-### Learning Goals
-- [ ] asdfg
-- [ ] asdfg
-- [ ] asdfg
-- [ ] asdfg
-- [ ] asdfg
+b. Import the required libraries:
 
-
-```console
-% python3
-Python 3.11.2 (main, Feb 16 2023, 03:15:23) [Clang 14.0.0 (clang-1400.0.29.202)] on darwin
-Type "help", "copyright", "credits" or "license" for more information.
->>> 
+```
+import tweepy
+from textblob import TextBlob
 ```
 
-```console?lang=python&prompt=>>>,...
->>> 12345 + 65432
-77777
+c. Authenticate with the Twitter API:
+
+```
+consumer_key = 'CONSUMER_KEY_HERE'
+consumer_secret = 'CONSUMER_SECRET_HERE'
+access_token = 'ACCESS_TOKEN_HERE'
+access_token_secret = 'ACCESS_TOKEN_SECRET_HERE'
+```
+```
+auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
+auth.set_access_token(access_token, access_token_secret)
+api = tweepy.API(auth)
 ```
 
-```python
-1 a, b = 0, 1
-2 while a < 10:
-3     print(a)
-4     a, b = b, a+b
+### Retrieving Tweets
+
+To retrieve tweets related to a specific topic, the code needs to perform the following steps:
+
+```
+public_tweets = api.search('Biden')
+for tweet in public_tweets:
+    print(tweet.text)
+```
+    
+### Sentiment Analysis:
+
+a. Performing sentiment analysis on tweets:
+To analyze the sentiment of each tweet, use the TextBlob library. Perform the following steps for each tweet:
+
+```
+analysis = TextBlob(tweet.text)
+print(analysis.sentiment)
+print("")
 ```
 
 
-<div class="primer-spec-callout info" markdown="1">
-If your code doesn't stop running, Ctrl-C should stop the running process.
-</div>
+b. Saving tweets and their sentiment to a CSV file:
+Instead of printing each tweet's sentiment, you can save them to a CSV file with corresponding labels ('positive' or 'negative'). You can decide the sentiment polarity threshold yourself. Add the following code inside the loop:
 
-**Pro-tip: sdfgh**
+```
+sentiment = analysis.sentiment.polarity
+if sentiment > 0:
+    label = 'positive'
+else:
+    label = 'negative'
 
-*Italics*
-
-this is an inline ```code()``` block.
-
-
-[Hyperlink Example - Instructions to use this theme to write specs](https://github.com/eecs485staff/primer-spec/blob/develop/docs/USAGE_ADVANCED.md#advanced-markdown-tips)  
-[Hyperlink Example - Markdown Guide](https://www.markdownguide.org/basic-syntax/)
+with open('tweets.csv', 'a') as file:
+    file.write(f'{tweet.text},{label}\n')
+```
 
 
+### Conclusion:
 
+The completed code should consist of approximately 40-50 lines, including the necessary imports, authentication, tweet retrieval, sentiment analysis, and saving of tweets to a CSV file. This project will provide a practical introduction to using machine learning techniques for sentiment analysis in Python, utilizing the Tweepy and TextBlob libraries. Intermediate coders will gain hands-on experience in retrieving data from an API, performing sentiment analysis, and storing results in a CSV file.
